@@ -39,7 +39,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   // Specify a fixed gas limit
   const gasLimit = 10000000 // Set your desired gas limit here
 
-  if (deployer !== deployer) {
+  if (deployer === deployer) {
     const wrapper = await ethers.getContract('NameWrapper', deployer)
     const tx = await wrapper.transferOwnership(deployer)
     console.log(
