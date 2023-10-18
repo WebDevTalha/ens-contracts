@@ -59,7 +59,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   }
 
   // Only attempt to make controller etc changes directly on testnets
-  if (network.name === 'mainnet') return
+  // if (network.name === 'mainnet') return
 
   console.log(
     'WRAPPER OWNER',
@@ -81,21 +81,21 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const artifact = await deployments.getArtifact('IETHRegistrarController')
   const interfaceId = computeInterfaceId(new Interface(artifact.abi))
 
-  const resolver = await registry.resolver(ethers.utils.namehash('eth'))
+  const resolver = await registry.resolver(ethers.utils.namehash('op'))
   if (resolver === ethers.constants.AddressZero) {
     console.log(
-      `No resolver set for .eth; not setting interface ${interfaceId} for ETH Registrar Controller`,
+      `No resolver set for .op; not setting interface ${interfaceId} for OP Registrar Controller`,
     )
     return
   }
   const resolverContract = await ethers.getContractAt('OwnedResolver', resolver)
   const tx3 = await resolverContract.setInterface(
-    ethers.utils.namehash('eth'),
+    ethers.utils.namehash('op'),
     interfaceId,
     controller.address,
   )
   console.log(
-    `Setting ETHRegistrarController interface ID ${interfaceId} on .eth resolver (tx: ${tx3.hash})...`,
+    `Setting ETHRegistrarController interface ID ${interfaceId} on .op resolver (tx: ${tx3.hash})...`,
   )
   await tx3.wait()
 }

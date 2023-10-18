@@ -61,12 +61,12 @@ const config: HardhatUserConfig = {
       chainId: 3,
       accounts: real_accounts,
     },
-    goerli: {
+    mainnet: {
       url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['test', 'use_root'],
+      tags: ['use_root'],
       chainId: 5,
       accounts: real_accounts,
-      gas: 8000000,
+      gas: 10000000,
       loggingEnabled: true,
     },
     'bsc-testnet': {
@@ -83,12 +83,12 @@ const config: HardhatUserConfig = {
       chainId: 11155111,
       accounts: real_accounts,
     },
-    mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['legacy', 'use_root'],
-      chainId: 1,
-      accounts: real_accounts,
-    },
+    // mainnet: {
+    //   url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+    //   tags: ['legacy', 'use_root'],
+    //   chainId: 1,
+    //   accounts: real_accounts,
+    // },
   },
   mocha: {},
   solidity: {

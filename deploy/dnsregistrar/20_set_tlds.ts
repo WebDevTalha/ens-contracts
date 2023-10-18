@@ -5,6 +5,7 @@ import { HardhatRuntimeEnvironment } from 'hardhat/types'
 
 const tld_map = {
   mainnet: ['xyz'],
+  opMainnet: ['xyz'],
   ropsten: ['xyz'],
   localhost: ['xyz'],
   hardhat: ['xyz'],

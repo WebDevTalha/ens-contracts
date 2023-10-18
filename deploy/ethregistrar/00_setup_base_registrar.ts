@@ -25,9 +25,9 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const tx2 = await root
     .connect(await ethers.getSigner(deployer))
-    .setSubnodeOwner('0x' + keccak256('eth'), registrar.address)
+    .setSubnodeOwner('0x' + keccak256('op'), registrar.address)
   console.log(
-    `Setting owner of eth node to registrar on root (tx: ${tx2.hash})...`,
+    `Setting owner of op node to registrar on root (tx: ${tx2.hash})...`,
   )
   await tx2.wait()
 }

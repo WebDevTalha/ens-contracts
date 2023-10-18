@@ -7,7 +7,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts()
 
   let oracleAddress = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419'
-  if (network.name !== 'mainnet') {
+  if (network.name === 'mainnet') {
     const dummyOracle = await deploy('DummyOracle', {
       from: deployer,
       args: ['160000000000'],
